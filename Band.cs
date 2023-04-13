@@ -12,7 +12,7 @@ namespace RhythmsGonnaGetYou
         public string Style { get; set; }
         public bool IsSigned { get; set; }
         public string ContactName { get; set; }
-        public int ContactPhoneNumber { get; set; }
+        public long ContactPhoneNumber { get; set; }
         public List<Album> Albums { get; set; }
     }
 }
