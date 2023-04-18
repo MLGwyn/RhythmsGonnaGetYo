@@ -105,7 +105,7 @@ namespace RhythmsGonnaGetYou
 
                     case 3:
                         var bandToAdd = PromptForString("What band are we adding an album to? ");
-                        var foundBand = context.Bands.FirstOrDefault(b => b.Name == bandToAdd);
+                        var foundBand = context.Bands.FirstOrDefault(band => band.Name == bandToAdd);
                         if (foundBand != null)
                         {
                             var albumName = PromptForString("What is the name of the album? ");
@@ -139,12 +139,12 @@ namespace RhythmsGonnaGetYou
 
                     case 4:
                         var albumToAdd = PromptForString("Which album are we adding songs to?");
-                        var foundAlbum = context.Albums.FirstOrDefault(a => a.Title == albumToAdd);
+                        var foundAlbum = context.Albums.FirstOrDefault(a => a.Title.ToUpper() == albumToAdd);
                         if (foundAlbum != null)
                         {
                             var track = PromptForInteger("What is the track number? ");
                             var songName = PromptForString("What is the name of the song?");
-                            var duration = PromptForString("What is the duration of the song? [mm:ss] ");
+                            var duration = PromptForString("What is the duration of the song? [hh:mm:ss] ");
                             var parseDuration = TimeOnly.Parse(duration);
 
                             var newSong = new Song
@@ -172,6 +172,7 @@ namespace RhythmsGonnaGetYou
                         else
                             Console.WriteLine($"Sorry. {bandToFire} was not found. ");
                         break;
+
                     case 6:
                         var bandToResign = PromptForString("Which band would you like to fire?");
                         var bandResigned = context.Bands.FirstOrDefault(b => b.Name.ToUpper() == bandToResign);
@@ -183,6 +184,7 @@ namespace RhythmsGonnaGetYou
                         else
                             Console.WriteLine($"Sorry. {bandToResign} was not found. ");
                         break;
+
                     case 7:
                         var bandToView = PromptForString("Which band would you like to view?");
                         var existingBand = context.Bands.FirstOrDefault(band => band.Name.ToUpper() == bandToView);
@@ -219,17 +221,15 @@ namespace RhythmsGonnaGetYou
                             Console.WriteLine($"{bandToView} was not found. ");
                         }
                         break;
+
                     case 8:
                         keepGoing = false;
                         break;
 
                 }
             }
-
-
-
         }
-
     }
 }
+
 
